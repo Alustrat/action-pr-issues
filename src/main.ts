@@ -22,7 +22,10 @@ async function run(): Promise<void> {
     if (github.context.eventName === 'pull_request') {
       const prPayload = github.context.payload
         .pull_request as Webhooks.WebhookPayloadPullRequestPullRequest
+      
       // eslint-disable-next-line no-console
+      console.log(prPayload)
+        // eslint-disable-next-line no-console
       console.log(prPayload.title)
       // eslint-disable-next-line no-console
       console.log(prPayload._links)
