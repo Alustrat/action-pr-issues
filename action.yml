@@ -1,10 +1,13 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'action-pr-issues'
+description: 'Parse pull request linked usses and add/remove them labels'
+author: 'Arnaud Lustrat'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  addLabels:
+    description: 'labels that will be added to issues'
+    required: false
+  addLabels:
+    description: 'labels that will be removed from issues'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
