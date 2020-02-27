@@ -5,7 +5,7 @@ inputs:
   addLabels:
     description: 'labels that will be added to issues'
     required: false
-  addLabels:
+  removeLabels:
     description: 'labels that will be removed from issues'
     required: false
 runs:
