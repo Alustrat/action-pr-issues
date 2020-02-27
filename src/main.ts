@@ -20,12 +20,18 @@ async function run(): Promise<void> {
     console.log(github.context.payload)
 
     if (github.context.eventName === 'pull_request') {
-      const pushPayload = github.context
-        .payload as Webhooks.WebhookPayloadPullRequestPullRequest
+      const prPayload = github.context.payload
+        .pull_request as Webhooks.WebhookPayloadPullRequestPullRequest
       // eslint-disable-next-line no-console
-      console.log(pushPayload.title)
+      console.log(prPayload.title)
       // eslint-disable-next-line no-console
-      console.log(pushPayload._links)
+      console.log(prPayload._links)
+
+      const issueList = prPayload._links.issue
+      for (const issue in issueList) {
+        // eslint-disable-next-line no-console
+        console.log(issue)
+      }
     }
   } catch (error) {
     core.setFailed(error.message)
