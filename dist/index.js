@@ -3515,26 +3515,35 @@ function run() {
         try {
             const addLabels = core.getInput('addlabels');
             const removeLabels = core.getInput('removeLabels');
-            // eslint-disable-next-line no-console
+            /* eslint-disable no-console */
+            console.log("addLabels:");
             console.log(addLabels);
-            // eslint-disable-next-line no-console
+            console.log("removeLabels:");
             console.log(removeLabels);
-            // eslint-disable-next-line no-console
+            console.log("event name:");
             console.log(github.context.eventName);
-            // eslint-disable-next-line no-console
+            console.log("payload:");
             console.log(github.context.payload);
             if (github.context.eventName === 'pull_request') {
-                const pushPayload = github.context
-                    .payload;
-                // eslint-disable-next-line no-console
-                console.log(pushPayload.title);
-                // eslint-disable-next-line no-console
-                console.log(pushPayload._links);
+                const prPayload = github.context.payload
+                    .pull_request;
+                console.log("payload2:");
+                console.log(prPayload);
+                console.log("PR title:");
+                console.log(prPayload.title);
+                console.log("PR links:");
+                console.log(prPayload._links);
+                const issueList = prPayload._links.issue;
+                for (const issue in issueList) {
+                    console.log("pr issues:");
+                    console.log(issue);
+                }
             }
         }
         catch (error) {
             core.setFailed(error.message);
         }
+        /* eslint-enable no-console */
     });
 }
 run();
